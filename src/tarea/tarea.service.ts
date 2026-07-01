@@ -67,11 +67,9 @@ export class TareaService {
    */
   update(id: string, updateTareaInput: UpdateTareaInput): Tarea {
     const tarea = this.findOne(id);
-
-    // Se descarta el id del input para no sobrescribirlo por accidente.
-    const { id: _ignorado, ...cambios } = updateTareaInput;
+    const cambios: Partial<UpdateTareaInput> = { ...updateTareaInput };
+    delete cambios.id;
     Object.assign(tarea, cambios);
-
     return tarea;
   }
 
