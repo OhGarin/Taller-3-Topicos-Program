@@ -28,7 +28,10 @@ export class TareaResolver {
    * Devuelve el listado completo de tareas.
    * @returns {Tarea[]} Todas las tareas registradas.
    */
-  @Query(() => [Tarea], { name: 'tareas', description: 'Lista todas las tareas.' })
+  @Query(() => [Tarea], {
+    name: 'tareas',
+    description: 'Lista todas las tareas.',
+  })
   findAll(): Tarea[] {
     return this.tareaService.findAll();
   }
@@ -38,7 +41,10 @@ export class TareaResolver {
    * @param {string} id - Identificador de la tarea.
    * @returns {Tarea} La tarea encontrada.
    */
-  @Query(() => Tarea, { name: 'tarea', description: 'Busca una tarea por su id.' })
+  @Query(() => Tarea, {
+    name: 'tarea',
+    description: 'Busca una tarea por su id.',
+  })
   findOne(@Args('id', { type: () => ID }) id: string): Tarea {
     return this.tareaService.findOne(id);
   }
